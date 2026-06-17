@@ -1,0 +1,215 @@
+@import "tailwindcss";
+
+/* ============================================================
+   DESIGN SYSTEM — Neo-Brutalism
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;800&display=swap');
+
+:root {
+  --font-sans: 'Space Grotesk', system-ui, sans-serif;
+  --font-display: 'Syne', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Brutalist Palette */
+  --bg-base: #f4f4f0; /* Off-white/beige */
+  --bg-surface: #ffffff;
+  
+  --accent-1: #ccff00; /* Neon Yellow/Green */
+  --accent-2: #ff00ff; /* Hot Pink */
+  --accent-3: #00e5ff; /* Cyan */
+
+  /* Text */
+  --text-primary: #000000;
+  --text-secondary: #333333;
+  --text-muted: #666666;
+
+  /* Brutal Borders & Shadows */
+  --brutal-border: 3px solid #000;
+  --brutal-shadow: 6px 6px 0px #000;
+  --brutal-shadow-hover: 2px 2px 0px #000;
+  --brutal-shadow-active: 0px 0px 0px #000;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.6;
+  overflow-x: hidden;
+  /* subtle dot pattern */
+  background-image: radial-gradient(#000000 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* ---------- Typography ---------- */
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.font-mono-bold {
+  font-family: var(--font-mono);
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar {
+  width: 12px;
+  border-left: var(--brutal-border);
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+::-webkit-scrollbar-thumb {
+  background: #000;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-2);
+}
+
+/* ---------- Utilities ---------- */
+.brutal-card {
+  background: var(--bg-surface);
+  border: var(--brutal-border);
+  box-shadow: var(--brutal-shadow);
+  transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+  border-radius: 0; /* Sharp corners */
+}
+
+.brutal-card-hover:hover {
+  transform: translate(4px, 4px);
+  box-shadow: var(--brutal-shadow-hover);
+}
+
+.btn-brutal {
+  font-family: var(--font-mono);
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 0.75rem 1.5rem;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  border: var(--brutal-border);
+  box-shadow: var(--brutal-shadow);
+  cursor: pointer;
+  transition: all 0.1s ease;
+  position: relative;
+}
+
+.btn-brutal:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 4px 4px 0px #000;
+}
+
+.btn-brutal:active {
+  transform: translate(6px, 6px);
+  box-shadow: var(--brutal-shadow-active);
+}
+
+.btn-brutal-primary {
+  background: var(--accent-1);
+}
+.btn-brutal-secondary {
+  background: var(--accent-2);
+  color: #fff;
+}
+
+.input-field-brutal {
+  width: 100%;
+  padding: 1rem;
+  background: var(--bg-surface);
+  border: var(--brutal-border);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  outline: none;
+  box-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+}
+
+.input-field-brutal:focus {
+  background: var(--accent-1);
+  box-shadow: var(--brutal-shadow);
+}
+
+.input-field-brutal::placeholder {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* ---------- Skeleton loader ---------- */
+@keyframes pulse-brutal {
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+.skeleton-brutal {
+  background: #000;
+  animation: pulse-brutal 1s step-end infinite;
+}
+
+/* ---------- Markdown & Blocks ---------- */
+.markdown-brutal {
+  color: var(--text-primary);
+  font-size: 1.125rem;
+  line-height: 1.8;
+  font-weight: 500;
+}
+
+.markdown-brutal p { margin-bottom: 1.5rem; }
+.markdown-brutal strong { font-weight: 700; background: var(--accent-1); padding: 0 4px; }
+.markdown-brutal a {
+  color: #000;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
+}
+.markdown-brutal a:hover {
+  background: var(--accent-2);
+  color: #fff;
+  text-decoration: none;
+}
+.markdown-brutal code {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.9em;
+  background: #000;
+  color: var(--accent-1);
+  padding: 0.1em 0.4em;
+}
+.markdown-brutal pre code { background: transparent; padding: 0; color: inherit; }
+.markdown-brutal blockquote {
+  border-left: 8px solid #000;
+  background: var(--bg-surface);
+  padding: 1.5rem;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 2rem 0;
+  box-shadow: 4px 4px 0px #000;
+}
+.markdown-brutal h1, .markdown-brutal h2, .markdown-brutal h3 {
+  font-family: var(--font-display);
+  color: #000;
+  margin-top: 2em;
+  margin-bottom: 0.75em;
+  font-weight: 800;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
