@@ -21,7 +21,7 @@ settings = get_settings()
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    """Create database tables on startup (dev convenience)."""
+    """Create database tables on startup."""
     Base.metadata.create_all(bind=engine)
     yield
 
@@ -34,18 +34,21 @@ app = FastAPI(
 )
 
 # ---------------------------------------------------------------------------
-# CORS — allow the Vite dev server
+# CORS Configuration
 # ---------------------------------------------------------------------------
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[settings.FRONTEND_URL, "http://localhost:5173"],
+    allow_origins=[
+        "http://localhost:5173",
+        "https://blog-seven-delta-90.vercel.app",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
 # ---------------------------------------------------------------------------
-# Register routers
+# Register Routers
 # ---------------------------------------------------------------------------
 app.include_router(auth_router)
 app.include_router(posts_router)
@@ -54,4 +57,7 @@ app.include_router(comments_router)
 
 @app.get("/")
 def root():
-    return {"message": f"Welcome to {settings.APP_NAME} API", "docs": "/docs"}
+    return {
+        "message": f"Welcome to {settings.APP_NAME} API",
+        "docs": "/docs",
+    }
