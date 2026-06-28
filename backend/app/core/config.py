@@ -14,7 +14,7 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
 
     # CORS
-   FRONTEND_URL: str = "https://blog-299jflqm9-srinavyaammanabolu23-ais-projects.vercel.app"
+  FRONTEND_URL: str = "https://blog-seven-delta-90.vercel.app"
 
     class Config:
         env_file = ".env"
